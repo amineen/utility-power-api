@@ -25,6 +25,7 @@ func main() {
 	port := os.Getenv("PORT")
 
 	serverMux.HandleFunc("/", handlers.Home)
+	serverMux.HandleFunc("/customers", handlers.GetAllCustomers)
 
 	// Define ANSI escape codes for colors
 	green := "\033[32m"

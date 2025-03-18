@@ -3,6 +3,8 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
+
+	"github.com/amineen/utility-api/services"
 )
 
 func Home(w http.ResponseWriter, r *http.Request) {
@@ -13,4 +15,15 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		"version": "v0.0.1",
 	}
 	json.NewEncoder(w).Encode(data)
+}
+
+func GetAllCustomers(w http.ResponseWriter, r *http.Request) {
+	customers, err := services.GetAllCustomers()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(customers)
 }

@@ -45,3 +45,19 @@ func ConnectDB() {
 	fmt.Printf("%sConnected to MongoDB!%s\n", orange, reset)
 	Client = client
 }
+
+func GetDatabase() *mongo.Database {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+	return Client.Database(os.Getenv("MONGODB_DATABASE"))
+}
+
+func GetCollection(name string) *mongo.Collection {
+	return GetDatabase().Collection(name)
+}
+
+func CustomersCollection() *mongo.Collection {
+	return GetCollection("customers")
+}
