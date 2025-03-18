@@ -6,13 +6,13 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/joho/godotenv"
 	"github.com/amineen/utility-api/handlers"
+	"github.com/joho/godotenv"
 )
 
 func main() {
 
-	// serverMux := http.NewServeMux()
+	serverMux := http.NewServeMux()
 
 	// Load .env file
 	err := godotenv.Load()
@@ -23,8 +23,12 @@ func main() {
 	port := os.Getenv("PORT")
 	fmt.Printf("Server running on port %s\n", port)
 
-	http.HandleFunc("/", Home)
+	serverMux.HandleFunc("/", handlers.Home)
 
-	// log.Printf("serving http://%s\n", *addr)
-	// log.Fatal(http.ListenAndServe(*addr, nil))
+	// Define ANSI escape codes for colors
+	green := "\033[32m"
+	reset := "\033[0m"
+
+	fmt.Printf("%sServer available at http://localhost:%s%s\n", green, port, reset)
+	log.Fatal(http.ListenAndServe(":"+port, serverMux))
 }
