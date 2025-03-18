@@ -17,8 +17,6 @@ type Customer struct {
 	Balances      Balance            `bson:"balances,omitempty"`
 	Active        bool               `bson:"active,omitempty"`
 	LastHeartbeat *time.Time         `bson:"last_heartbeat,omitempty"`
-	CreatedAt     time.Time          `bson:"created_at,omitempty"`
-	UpdatedAt     time.Time          `bson:"updated_at,omitempty"`
 }
 
 type Balance struct {
