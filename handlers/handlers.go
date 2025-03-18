@@ -10,7 +10,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	data := map[string]string{
 		"message": "Welcome to the Home Page",
 		"author":  "Aaron Mineen",
-		"version": "v0",
+		"version": "v0.0.1",
 	}
 	json.NewEncoder(w).Encode(data)
 }
