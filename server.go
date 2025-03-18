@@ -6,11 +6,13 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/amineen/utility-api/db"
 	"github.com/amineen/utility-api/handlers"
 	"github.com/joho/godotenv"
 )
 
 func main() {
+	db.ConnectDB()
 
 	serverMux := http.NewServeMux()
 
@@ -21,7 +23,6 @@ func main() {
 	}
 
 	port := os.Getenv("PORT")
-	fmt.Printf("Server running on port %s\n", port)
 
 	serverMux.HandleFunc("/", handlers.Home)
 
