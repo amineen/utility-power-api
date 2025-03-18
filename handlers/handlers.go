@@ -27,3 +27,15 @@ func GetAllCustomers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(customers)
 }
+
+func GetCustomersByUtilityID(w http.ResponseWriter, r *http.Request) {
+	utilityID := r.PathValue("utilityId")
+	customers, err := services.GetCustomersByUtilityID(utilityID)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(customers)
+}
