@@ -9,7 +9,7 @@ import (
 )
 
 func GetAllCustomers() ([]models.Customer, error) {
-	collection := db.CustomersCollection()
+	collection := db.GetCustomersCollection()
 
 	cursor, err := collection.Find(context.TODO(), bson.M{})
 	if err != nil {
@@ -24,7 +24,7 @@ func GetAllCustomers() ([]models.Customer, error) {
 }
 
 func GetCustomersByUtilityID(utilityID string) ([]models.Customer, error) {
-	collection := db.CustomersCollection()
+	collection := db.GetCustomersCollection()
 
 	cursor, err := collection.Find(context.TODO(), bson.M{"service_area_id": utilityID})
 

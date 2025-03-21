@@ -58,6 +58,10 @@ func GetCollection(name string) *mongo.Collection {
 	return GetDatabase().Collection(name)
 }
 
-func CustomersCollection() *mongo.Collection {
+func GetCustomersCollection() *mongo.Collection {
 	return GetCollection("customers")
+}
+
+func GetVendorSalesSummaryCollection() *mongo.Collection {
+	return GetCollection("vendor-sales-summaries")
 }
