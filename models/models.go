@@ -27,3 +27,13 @@ type MonitoryValue struct {
 	Value    string `bson:"value,omitempty"`
 	Currency string `bson:"currency,omitempty"`
 }
+
+type VendorSalesSummary struct {
+	ID                primitive.ObjectID `bson:"_id,omitempty"`
+	Date              string             `bson:"date,omitempty"`
+	VendingStation    string             `bson:"vendingStation,omitempty"`
+	TotalAmountSold   float32            `bson:"totalAmountSold,omitempty"`
+	TotalKwhSold      float32            `bson:"totalKwhSold,omitempty"`
+	TotalTransactions int                `bson:"totalTransactions,omitempty"`
+	UserId            string             `bson:"userId,omitempty"`
+}
